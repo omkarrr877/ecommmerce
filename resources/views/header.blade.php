@@ -1,8 +1,16 @@
+<?php 
+use App\Http\Controllers\ProductController;
+$total=0;
+if(Session::has('user')){
+$total=ProductController::cartItem();
+}
+?>
+
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark primary-color pink darken-4">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/">Ecommmerce</a>
   
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -14,7 +22,7 @@
     <div class="collapse navbar-collapse" id="basicExampleNav">
   
       <!-- Links -->
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home
             <span class="sr-only">(current)</span>
@@ -40,12 +48,33 @@
   
       </ul>
       <!-- Links -->
-  
-      <form class="form-inline">
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        </div>
-      </form>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link btn" href="#">
+        <i class="fas fa-shopping-cart"></i>
+      Cart <span class="badge badge-danger ml-2">{{$total}}</span>
+      </a>
+    </li>
+@if (Session::has('user'))
+            <!--Dropdown primary-->
+<li class="nav-item dropdown">
+  <!--Trigger-->
+  <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">{{Session::get('user')['name']}}</a>
+  <!--Menu-->
+  <div class="dropdown-menu dropdown-primary">
+    <a class="dropdown-item" href="/logout">Logout</a>
+  </div>
+</li>
+    @else
+    <li class="nav-item">
+      <a class="nav-link btn" href="/login">
+        Login
+      </a>
+    </li>
+@endif
+  </ul>
+
     </div>
     <!-- Collapsible content -->
   

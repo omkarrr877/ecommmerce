@@ -13,6 +13,27 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.slider-img{
+width: 50%;
+    height: 500px;
+}
+.custom-product{
+   
+}
+.slider-text{
+    background: #35443585;
+}
+.trending-img{
+    height: 100px;
+}
+
+</style>
 </head>
 <body>
     {{View::make('header')}}
